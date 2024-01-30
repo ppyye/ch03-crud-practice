@@ -2,7 +2,6 @@ package com.study.app;
 
 import com.study.model.dto.PhoneDTO;
 
-import javax.swing.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -44,6 +43,7 @@ public class DBManager {
             close(con);
         }
     }
+
     public void selectName(String name) {
         Connection con = getConnection();
         PreparedStatement pstmt = null;
@@ -70,6 +70,13 @@ public class DBManager {
 
                 phoneList.add(phone);
             }
+            if(!phoneList.isEmpty()) {
+                for(PhoneDTO ph : phoneList) {
+                    System.out.println(ph);
+                }
+            } else {
+                System.out.println("▷ 조회된 데이터가 없습니다.");
+            }
         } catch (IOException | SQLException e) {
             e.printStackTrace();
         } finally {
@@ -77,14 +84,8 @@ public class DBManager {
             close(pstmt);
             close(con);
         }
-        if(!phoneList.isEmpty()) {
-            for(PhoneDTO ph : phoneList) {
-                System.out.println(ph);
-            }
-        } else {
-            System.out.println("▷ 조회된 데이터가 없습니다.");
-        }
     }
+
     public void insert(PhoneDTO phone) {
         Connection con = getConnection();
         PreparedStatement pstmt = null;
