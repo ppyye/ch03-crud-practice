@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment/>
+    <entry key="selectCode">
+        SELECT phone_name, phone_price
+        FROM phone
+        WHERE phone_code = ?
+    </entry>
+
+    <entry key="selectName">
+        SELECT *
+        FROM phone
+        WHERE phone_name LIKE CONCAT('%', ?, '%')
+    </entry>
+
+    <entry key="insertPhone">
+        INSERT INTO phone(phone_name, phone_price)
+        VALUES(?, ?)
+    </entry>
+
+    <entry key="updatePhone">
+        UPDATE phone
+        SET phone_name = ?,
+            phone_price = ?
+        WHERE phone_code = ?
+    </entry>
+
+    <entry key="deletePhone">
+        DELETE
+        FROM phone
+        WHERE phone_code = ?
+    </entry>
+
+</properties>
